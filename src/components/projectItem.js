@@ -13,9 +13,9 @@ export default class ProjectItem extends Component {
           <div className="_title-block">
             <h3>{title}</h3>
           </div>
-          <p className="_summary">
-            {summary.map(val => <p className="_summary_list">{val}</p>)}
-          </p>
+          <div className="_summary">
+            {summary.map((val, idx) => <p className="_summary_list" key={idx}>{val}</p>)}
+          </div>
         </div>
       </li>
     );
