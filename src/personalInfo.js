@@ -16,7 +16,7 @@ export const projectInfo = [
   {
     title: "🐶 Current Projects",
     summary: [
-      "I Work on TOAST FILE with FE Development Lab at NHN Entertainment.",
+      "I work on TOAST FILE with FE Development Lab at NHN Entertainment.",
       "I am interested in OpenSource and JavaScript."
     ],
     image: toast
