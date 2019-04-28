@@ -1,12 +1,13 @@
-import toast from '../public/static/images/toast.png';
-import inha from '../public/static/images/inha.png';
-import ctp from '../public/static/images/ctp.png';
-import intern from '../public/static/images/intern.jpeg';
-import medium from '../public/static/images/medium.svg';
+import toast from './images/toast.png';
+import inha from './images/inha.png';
+import ctp from './images/ctp.png';
+import intern from './images/intern.jpeg';
+import medium from './images/medium.svg';
+import toastui from './images/toastui.png';
 
 export const socialLinks = {
   facebook: "https://www.facebook.com/profile.php?id=100005573837145&ref=bookmarks",
-  instagram: "https://www.instagram.com/hann0ng/",
+  instagram: "https://www.instagram.com/___hanjung/",
   medium: "https://medium.com/@junghan_61455",
   linkedin: "https://www.linkedin.com/in/jung-han-819501125",
   github: "https://github.com/jung-han"
@@ -16,8 +17,16 @@ export const projectInfo = [
   {
     title: "🐶 Current Projects",
     summary: [
-      "I work on TOAST FILE with FE Development Lab at NHN Entertainment.",
-      "I am interested in OpenSource and JavaScript."
+      "I work on TOAST UI with FE Development Lab at NHN.",
+      "I'm maintaining open source projects TOAST-UI Chart, Grid and Components."
+    ],
+    image: toastui
+  },
+  {
+    title: "🦄 Past Projects",
+    summary: [
+      "🔸 TOAST FILE (2018.06 ~ 2019.01)",
+      "I worked on TOAST FILE. I used React, Redux and Redux-saga."
     ],
     image: toast
   },
