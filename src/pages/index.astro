@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Header from "../components/Header.astro";
+import Body from "../components/Body.astro";
+import Layout from "../layouts/Layout.astro";
+import Gallery from "../components/Gallery.astro";
+import Account from "../components/Account.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import "../styles/global.css";
 ---
 
 <Layout>
-	<Welcome />
+  <Header />
+  <Body />
+  <Gallery />
+  <Account />
 </Layout>
+
+<script>
+  function handleIntersection(entries: IntersectionObserverEntry[]) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver(handleIntersection, {
+    threshold: 0.1,
+    rootMargin: "50px",
+  });
+
+  document.querySelectorAll(".fade-in").forEach((element) => {
+    observer.observe(element);
+  });
+</script>

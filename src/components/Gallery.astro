@@ -1,0 +1,61 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image, getImage } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*/*");
+const imagePaths = Object.keys(images).filter((imagePath) => {
+  return imagePath.startsWith(`/src/assets/gallery/`);
+});
+---
+
+<section
+  class="flex flex-col items-center justify-center gap-1 bg-[color:--sub-bg] py-10"
+>
+  <span class="text-sm font-light text-slate-400">gallery</span>
+  <p class="mb-5 text-xl font-medium">갤러리</p>
+  <div
+    id="gallery"
+    class="container mx-auto grid grid-cols-3 gap-2 px-2 pb-2 md:grid-cols-3"
+  >
+    {
+      imagePaths.map(async (imagePath) => {
+        let image = images[imagePath]();
+        let optimizedImage = await getImage({
+          src: image,
+        });
+
+        return (
+          <a
+            href={optimizedImage.src}
+            data-pswp-width={optimizedImage.attributes.width}
+            data-pswp-height={optimizedImage.attributes.height}
+            target="_blank"
+            class="border-primary hover:border-secondary overflow-hidden rounded-md border-[1px]"
+          >
+            <Image
+              src={image}
+              alt={"altText"}
+              height={350}
+              class={
+                "aspect-[2/3] w-full object-cover grayscale-[80%] transition duration-300 ease-in-out hover:grayscale-0"
+              }
+            />
+          </a>
+        );
+      })
+    }
+  </div>
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#gallery",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+  });
+
+  lightbox.init();
+</script>
